@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  #layout 'question'
 
   # GET /ideas
   # GET /ideas.json
@@ -19,6 +20,7 @@ class IdeasController < ApplicationController
 
   # GET /ideas/1/edit
   def edit
+#    redirect_to '/ideas'
   end
 
   # POST /ideas
@@ -39,27 +41,38 @@ class IdeasController < ApplicationController
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json
-  def update
-    respond_to do |format|
-      if @idea.update(idea_params)
-        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
-        format.json { render :show, status: :ok, location: @idea }
-      else
-        format.html { render :edit }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
+#  def update
+#    redirect_to '/ideas'
+#  end
+
+#  =begin
+    def update
+      respond_to do |format|
+        if @idea.update(idea_params)
+          format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+          format.json { render :show, status: :ok, location: @idea }
+        else
+          format.html { render :edit }
+          format.json { render json: @idea.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
-
+#  =end
   # DELETE /ideas/1
   # DELETE /ideas/1.json
-  def destroy
-    @idea.destroy
-    respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
-      format.json { head :no_content }
+#  def destroy
+#    redirect_to '/ideas'
+#  end
+
+#  =begin
+    def destroy
+      @idea.destroy
+      respond_to do |format|
+        format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
-  end
+#  =end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +84,4 @@ class IdeasController < ApplicationController
     def idea_params
       params.require(:idea).permit(:idea_title, :user_name, :idea)
     end
-end
+  end
